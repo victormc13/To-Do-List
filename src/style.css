@@ -39,7 +39,7 @@ body {
   border-bottom: 1px solid gray;
 }
 
-.task-input input {
+.task-form input {
   width: 100%;
   font-style: italic;
   border: none;
