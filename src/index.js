@@ -1,5 +1,5 @@
 import './style.css';
-import { renderTasks, addTask, clearCompletedTasks } from './modules/tasks';
+import { renderTasks, addTask, clearCompletedTasks } from './modules/tasks.js';
 
 renderTasks();
 
