@@ -92,7 +92,24 @@ button:focus {
   border-bottom: 1px solid gray;
 }
 
+.completed-tasks-btn {
+  text-decoration: underline;
+}
+
 .task-completed {
   color: rgb(0, 132, 255);
   text-decoration: line-through;
+}
+
+.task-editing {
+  background-color: lightblue;
+  font-style: italic;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
