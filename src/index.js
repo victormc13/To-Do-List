@@ -1,5 +1,5 @@
 import './style.css';
-import { renderTasks, addTask, clearCompletedTasks } from './modules/tasks.js';
+import { renderTasks, addTask } from './modules/tasks.js';
 
 renderTasks();
 
@@ -27,10 +27,4 @@ addTaskBtn.addEventListener('click', () => {
 const refreshTasks = document.querySelector('.la-sync');
 refreshTasks.addEventListener('click', () => {
   window.location.reload();
-});
-
-const clearButton = document.querySelector('.completed-tasks-btn');
-clearButton.addEventListener('click', () => {
-  // Use the clearCompletedTasks() function from the tasks module
-  clearCompletedTasks();
 });
