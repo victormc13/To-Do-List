@@ -48,43 +48,79 @@ export function renderTasks() {
       taskItem.classList.add('task-editing');
       taskMenu.classList.add('hidden');
 
-      if (taskItem.classList.contains('task-editing')) {
+      const showTrashIcon = () => {
         trashIcon.classList.remove('hidden');
         trashIcon.classList.add('show');
+      };
 
+      const enableTaskDescriptionEditing = () => {
         taskDescription.contentEditable = true;
         taskDescription.focus();
+      };
 
+      const updateTaskIndexes = () => {
+        tasks.forEach((task, index) => {
+          task.index = index + 1;
+        });
+      };
+
+      const deleteTask = () => {
+        const index = tasks.indexOf(task);
+        if (index > -1) {
+          tasks.splice(index, 1);
+          renderTasks();
+          updateTaskIndexes();
+        }
+        saveTasks();
+      };
+
+      const addTrashIconEventListener = () => {
         trashIcon.addEventListener('click', () => {
           if (trashIcon.classList.contains('la-trash-alt')) {
-            const index = tasks.indexOf(task);
-            if (index > -1) {
-              tasks.splice(index, 1);
-              saveTasks();
-              // loop through remaining tasks and update their indexes
-              tasks.forEach((task, index) => {
-                task.index = index;
-              });
-              renderTasks();
-            }
+            deleteTask();
+            renderTasks();
           }
         });
+      };
 
-        // add event listener to handle key presses
+      const disableTaskDescriptionEditing = () => {
+        taskDescription.contentEditable = false;
+      };
+
+      const hideTaskMenu = () => {
+        taskMenu.classList.add('hidden');
+      };
+
+      const showTaskMenu = () => {
+        taskMenu.classList.remove('hidden');
+        taskMenu.classList.add('show');
+      };
+
+      const addKeydownEventListener = () => {
         taskDescription.addEventListener('keydown', (event) => {
           if (event.key === 'Enter' || event.key === 'Escape') {
-            event.preventDefault(); // prevent default behavior
-            taskDescription.contentEditable = false; // disable editing
+            event.preventDefault();
+            disableTaskDescriptionEditing();
             taskItem.classList.remove('task-editing');
             trashIcon.classList.add('hidden');
-            taskMenu.classList.remove('hidden');
-            taskMenu.classList.add('show');
-            saveTasks(); // save changes
+            showTaskMenu();
+            saveTasks();
           }
         });
+      };
 
-        taskMenu.classList.add('hidden');
-      }
+      const editTask = () => {
+        if (taskItem.classList.contains('task-editing')) {
+          showTrashIcon();
+          enableTaskDescriptionEditing();
+          addTrashIconEventListener();
+          addKeydownEventListener();
+          hideTaskMenu();
+        }
+      };
+
+      updateTaskIndexes();
+      editTask();
     });
     taskItem.appendChild(taskMenu);
     taskItem.appendChild(trashIcon);
@@ -94,7 +130,7 @@ export function renderTasks() {
 }
 
 export function addTask(description) {
-  const index = tasks.length;
+  const index = tasks.length + 1;
   tasks.push({
     description,
     completed: false,
