@@ -1,1 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 120%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  min-width: 310px;
+  width: 50%;
+  background-color: #fff;
+  box-shadow: 0 2px 6px 2px gray;
+  border-radius: 0.25rem;
+}
+
+.container > * {
+  padding: 1rem;
+  min-height: 60px;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.task-form input {
+  width: 100%;
+  font-style: italic;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(63, 63, 63);
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  width: 100%;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+button:focus {
+  text-decoration: underline;
+}
+
+.btn {
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.task-container {
+  padding: 0;
+  list-style: none;
+  height: 50vh;
+  border: none;
+  overflow-y: scroll;
+}
+
+.task-container::-webkit-scrollbar {
+  width: 0;
+}
+
+.task-item {
+  padding: 1rem;
+  align-items: center;
+  font-weight: 700;
+  gap: 0.5rem;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+
+.completed-tasks-btn {
+  text-decoration: underline;
+}
+
+.task-completed {
+  color: rgb(0, 132, 255);
+  text-decoration: line-through;
+}
+
+.task-editing {
+  background-color: lightblue;
+  font-style: italic;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
