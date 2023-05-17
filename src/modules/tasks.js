@@ -24,6 +24,11 @@ export function renderTasks() {
     const taskCheckbox = document.createElement('input');
     taskCheckbox.type = 'checkbox';
     taskCheckbox.checked = task.completed;
+    taskCheckbox.addEventListener('change', () => {
+      task.completed = taskCheckbox.checked;
+      saveTasks();
+      renderTasks();
+    });
     taskItem.appendChild(taskCheckbox);
 
     // Create the task description element
@@ -136,6 +141,24 @@ export function addTask(description) {
     completed: false,
     index,
   });
+  saveTasks();
+  renderTasks();
+}
+
+const updateTaskIndexes = () => {
+  tasks.forEach((task, index) => {
+    task.index = index + 1;
+  });
+};
+
+export function clearCompletedTasks() {
+  const completedTasks = tasks.filter((task) => task.completed);
+
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    tasks.splice(tasks.indexOf(completedTasks[i]), 1);
+  }
+
+  updateTaskIndexes();
   saveTasks();
   renderTasks();
 }
