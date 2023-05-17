@@ -152,14 +152,12 @@ const updateTaskIndexes = () => {
 };
 
 export function clearCompletedTasks() {
-  for (let i = tasks.length - 1; i >= 0; i -= 1) {
-    if (tasks[i].completed) {
-      tasks.splice(i, 1);
-    }
+  const completedTasks = tasks.filter((task) => task.completed);
+
+  for (let i = 0; i < completedTasks.length; i += 1) {
+    tasks.splice(tasks.indexOf(completedTasks[i]), 1);
   }
-  tasks.forEach((task, index) => {
-    task.index = index;
-  });
+
   updateTaskIndexes();
   saveTasks();
   renderTasks();
