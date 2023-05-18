@@ -1,4 +1,5 @@
 import './style.css';
+import '../src/listing.svg';
 import { renderTasks, addTask, clearCompletedTasks } from './modules/tasks.js';
 
 renderTasks();
