@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _src_listing_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/listing.svg */ \"./src/listing.svg\");\n/* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tasks.js */ \"./src/modules/tasks.js\");\n\r\n\r\n\r\n\r\n(0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.renderTasks)();\r\n\r\nconst form = document.querySelector('.task-form');\r\nform.addEventListener('submit', (event) => {\r\n  event.preventDefault();\r\n  const input = form.querySelector('input[type=text]');\r\n  const description = input.value.trim();\r\n  if (description) {\r\n    (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.addTask)(description);\r\n    input.value = '';\r\n  }\r\n});\r\n\r\nconst addTaskBtn = document.querySelector('.la-level-down-alt');\r\naddTaskBtn.addEventListener('click', () => {\r\n  const input = form.querySelector('input[type=text]');\r\n  const description = input.value.trim();\r\n  if (description) {\r\n    (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.addTask)(description);\r\n    input.value = '';\r\n  }\r\n});\r\n\r\nconst refreshTasks = document.querySelector('.la-sync');\r\nrefreshTasks.addEventListener('click', () => {\r\n  window.location.reload();\r\n});\r\n\r\nconst clearButton = document.querySelector('.completed-tasks-btn');\r\nclearButton.addEventListener('click', () => {\r\n  // Use the clearCompletedTasks() function from the tasks module\r\n  (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.clearCompletedTasks)();\r\n});\r\n\n\n//# sourceURL=webpack://webpack-boilerplate/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _src_list_icon_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/list-icon.svg */ \"./src/list-icon.svg\");\n/* harmony import */ var _modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tasks.js */ \"./src/modules/tasks.js\");\n\r\n\r\n\r\n\r\n(0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.renderTasks)();\r\n\r\nconst form = document.querySelector('.task-form');\r\nform.addEventListener('submit', (event) => {\r\n  event.preventDefault();\r\n  const input = form.querySelector('input[type=text]');\r\n  const description = input.value.trim();\r\n  if (description) {\r\n    (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.addTask)(description);\r\n    input.value = '';\r\n  }\r\n});\r\n\r\nconst addTaskBtn = document.querySelector('.la-level-down-alt');\r\naddTaskBtn.addEventListener('click', () => {\r\n  const input = form.querySelector('input[type=text]');\r\n  const description = input.value.trim();\r\n  if (description) {\r\n    (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.addTask)(description);\r\n    input.value = '';\r\n  }\r\n});\r\n\r\nconst refreshTasks = document.querySelector('.la-sync');\r\nrefreshTasks.addEventListener('click', () => {\r\n  window.location.reload();\r\n});\r\n\r\nconst clearButton = document.querySelector('.completed-tasks-btn');\r\nclearButton.addEventListener('click', () => {\r\n  // Use the clearCompletedTasks() function from the tasks module\r\n  (0,_modules_tasks_js__WEBPACK_IMPORTED_MODULE_2__.clearCompletedTasks)();\r\n});\r\n\n\n//# sourceURL=webpack://webpack-boilerplate/./src/index.js?");
 
 /***/ }),
 
@@ -130,13 +130,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/listing.svg":
-/*!*************************!*\
-  !*** ./src/listing.svg ***!
-  \*************************/
+/***/ "./src/list-icon.svg":
+/*!***************************!*\
+  !*** ./src/list-icon.svg ***!
+  \***************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"a41b4d0a2bf0fb7d2038.svg\";\n\n//# sourceURL=webpack://webpack-boilerplate/./src/listing.svg?");
+eval("module.exports = __webpack_require__.p + \"f0c1cb90013705e375d9.svg\";\n\n//# sourceURL=webpack://webpack-boilerplate/./src/list-icon.svg?");
 
 /***/ })
 
