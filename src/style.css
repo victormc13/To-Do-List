@@ -97,12 +97,13 @@ button:focus {
 }
 
 .task-completed {
-  color: rgb(0, 132, 255);
+  color: lightcyan;
+  background-color: lightseagreen;
   text-decoration: line-through;
 }
 
 .task-editing {
-  background-color: lightblue;
+  background-color: lightskyblue;
   font-style: italic;
 }
 
