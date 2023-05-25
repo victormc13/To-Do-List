@@ -1,10 +1,8 @@
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function saveTasks() {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
 
-export function renderTasks() {
+export const renderTasks = () => {
   const taskContainer = document.querySelector('.task-container');
   taskContainer.innerHTML = '';
 
@@ -132,9 +130,9 @@ export function renderTasks() {
 
     taskContainer.appendChild(taskItem);
   });
-}
+};
 
-export function addTask(description) {
+export const addTask = (description) => {
   const index = tasks.length + 1;
   tasks.push({
     description,
@@ -143,7 +141,7 @@ export function addTask(description) {
   });
   saveTasks();
   renderTasks();
-}
+};
 
 const updateTaskIndexes = () => {
   tasks.forEach((task, index) => {
@@ -151,14 +149,15 @@ const updateTaskIndexes = () => {
   });
 };
 
-export function clearCompletedTasks() {
+export const clearCompletedTasks = () => {
   const completedTasks = tasks.filter((task) => task.completed);
 
-  for (let i = 0; i < completedTasks.length; i += 1) {
-    tasks.splice(tasks.indexOf(completedTasks[i]), 1);
-  }
+  completedTasks.forEach((completedTask) => {
+    const index = tasks.indexOf(completedTask);
+    tasks.splice(index, 1);
+  });
 
   updateTaskIndexes();
   saveTasks();
   renderTasks();
-}
+};
