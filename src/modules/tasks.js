@@ -1,6 +1,6 @@
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
+export const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
 
 export const renderTasks = () => {
   const taskContainer = document.querySelector('.task-container');

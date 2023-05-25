@@ -1,4 +1,4 @@
-import { addTask, saveTasks, renderTasks } from './tasks';
+import { addTask, saveTasks, renderTasks } from './tasks.js';
 
 // Mock the storage-related functions
 jest.mock('./tasks', () => ({
