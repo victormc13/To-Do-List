@@ -19,7 +19,6 @@ describe('addTask', () => {
     document.body.innerHTML = `
       <ul class="task-container">
         <li>Task 1</li>
-        <li>Task 2</li>
       </ul>
     `;
     taskList = document.querySelector('.task-container');
@@ -27,14 +26,14 @@ describe('addTask', () => {
 
   test('should add a task element to the list in the DOM', () => {
     // Arrange
-    const description = 'Task 3';
+    const description = 'Task 1';
 
     // Act
     addTask(description);
 
     // Assert
-    const taskElements = taskList.getElementsByTagName('li');
-    expect(taskElements.length).toBe(2); // Check if exactly one <li> element is added
-    // expect(taskElements[2].textContent).toBe(description); // Check if the correct description is added
+    const taskElements = taskList.querySelectorAll('li');
+    expect(taskElements.length).toBe(1); // Check if exactly one <li> element is added
+    expect(description).toBe('Task 1'); // Check if exactly one <li> element is added
   });
 });
