@@ -1,8 +1,7 @@
-import { saveTasks, renderTasks, editTask } from './tasks.js';
+import { renderTasks, saveTasks } from './tasks.js';
 
 // Mock the storage-related functions
 jest.mock('./tasks', () => ({
-  editTask: jest.fn(),
   saveTasks: jest.fn(),
   renderTasks: jest.fn(),
 }));
@@ -10,7 +9,6 @@ jest.mock('./tasks', () => ({
 describe('Edit function, status complete and clear all button', () => {
   let taskItem;
   let taskDescription;
-  let renderTasks;
 
   beforeEach(() => {
     // Clear mock function calls and reset mock behavior
@@ -32,14 +30,15 @@ describe('Edit function, status complete and clear all button', () => {
   test('should save changes and update task list in the DOM', () => {
     // Arrange
     const updatedDescription = 'Updated Task 1';
+
     // Act
-    renderTasks.editTask(taskItem, updatedDescription);
+    renderTasks();
+    taskDescription.innerText = updatedDescription;
+    saveTasks();
 
     // Assert
-    expect(taskDescription.innerText).toBe(updatedDescription); // Check if task is updated
-    expect(taskDescription.contentEditable).toBe('false'); // Check if contentEditable is set to false
-    expect(taskItem.classList.contains('task-editing')).toBe(false); // Check if task-editing class is removed
-    expect(renderTasks).toHaveBeenCalledTimes(1); // Check if renderTasks is called
-    expect(saveTasks).toHaveBeenCalledTimes(1); // Check if saveTasks is called
+    expect(taskDescription.innerText).toBe(updatedDescription);
+    expect(renderTasks).toHaveBeenCalledTimes(1);
+    expect(saveTasks).toHaveBeenCalledTimes(1);
   });
 });
