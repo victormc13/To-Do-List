@@ -1,4 +1,6 @@
-import { addTask, deleteTask, saveTasks, renderTasks } from './tasks.js';
+import {
+  addTask, deleteTask, saveTasks, renderTasks,
+} from './tasks.js';
 
 // Mock the storage-related functions
 jest.mock('./tasks', () => ({
@@ -8,7 +10,7 @@ jest.mock('./tasks', () => ({
   renderTasks: jest.fn(),
 }));
 
-describe('addTask', () => {
+describe('addTask and deleteTask tests', () => {
   let taskList;
 
   beforeEach(() => {

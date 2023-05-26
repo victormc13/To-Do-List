@@ -149,6 +149,16 @@ const updateTaskIndexes = () => {
   });
 };
 
+export const deleteTask = (task) => {
+  const index = tasks.indexOf(task);
+  if (index > -1) {
+    tasks.splice(index, 1);
+    renderTasks();
+    updateTaskIndexes();
+  }
+  saveTasks();
+};
+
 export const clearCompletedTasks = () => {
   const completedTasks = tasks.filter((task) => task.completed);
 
