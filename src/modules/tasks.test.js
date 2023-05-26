@@ -1,8 +1,9 @@
-import { addTask, saveTasks, renderTasks } from './tasks.js';
+import { addTask, deleteTask, saveTasks, renderTasks } from './tasks.js';
 
 // Mock the storage-related functions
 jest.mock('./tasks', () => ({
   addTask: jest.fn(),
+  deleteTask: jest.fn(),
   saveTasks: jest.fn(),
   renderTasks: jest.fn(),
 }));
@@ -35,5 +36,14 @@ describe('addTask', () => {
     const taskElements = taskList.querySelectorAll('li');
     expect(taskElements.length).toBe(1); // Check if exactly one <li> element is added
     expect(description).toBe('Task 1'); // Check if exactly one <li> element is added
+  });
+
+  test('should remove a task element from the list in the DOM', () => {
+    // Act
+    deleteTask();
+
+    // Assert
+    const taskElements = taskList.querySelectorAll('li');
+    expect(taskElements.length).toBe(1); // Check if exactly one <li> element has been removed
   });
 });
