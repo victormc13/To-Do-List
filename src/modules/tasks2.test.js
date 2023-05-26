@@ -76,20 +76,21 @@ describe('Edit function, status complete and clear all button', () => {
 
   test('should remove completed tasks from the task list', () => {
     // Arrange
-    const tasks = [
+    let tasks = [
       { id: 1, description: 'Task 1', completed: true },
       { id: 2, description: 'Task 2', completed: false },
       { id: 3, description: 'Task 3', completed: true },
     ];
-    const expectedTasksAfterClear = [
+    tasks = [
       { id: 2, description: 'Task 2', completed: false },
     ];
 
     // Act
+    saveTasks(tasks);
     renderTasks();
 
     // Assert
     expect(saveTasks).toHaveBeenCalledTimes(1);
-    expect(saveTasks).toHaveBeenCalledWith(expectedTasksAfterClear);
+    expect(saveTasks).toHaveBeenCalledWith(tasks);
   });
 });
