@@ -1,6 +1,6 @@
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
+export const saveTasks = () => localStorage.setItem('tasks', JSON.stringify(tasks));
 
 export const renderTasks = () => {
   const taskContainer = document.querySelector('.task-container');
@@ -147,6 +147,16 @@ const updateTaskIndexes = () => {
   tasks.forEach((task, index) => {
     task.index = index + 1;
   });
+};
+
+export const deleteTask = (task) => {
+  const index = tasks.indexOf(task);
+  if (index > -1) {
+    tasks.splice(index, 1);
+    renderTasks();
+    updateTaskIndexes();
+  }
+  saveTasks();
 };
 
 export const clearCompletedTasks = () => {

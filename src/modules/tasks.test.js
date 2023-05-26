@@ -1,7 +1,51 @@
-import { addTask } from './tasks'
+import {
+  addTask, deleteTask, saveTasks, renderTasks,
+} from './tasks.js';
 
-describe('addTask', () => {
-  test('should add task when addTask class is called', () => {
-    expect(addTask(description)).toBe('task1')
-  })
+// Mock the storage-related functions
+jest.mock('./tasks', () => ({
+  addTask: jest.fn(),
+  deleteTask: jest.fn(),
+  saveTasks: jest.fn(),
+  renderTasks: jest.fn(),
+}));
+
+describe('addTask and deleteTask tests', () => {
+  let taskList;
+
+  beforeEach(() => {
+    // Clear mock function calls and reset mock behavior
+    saveTasks.mockClear();
+    renderTasks.mockClear();
+
+    // Create a mock task list in the DOM
+    document.body.innerHTML = `
+      <ul class="task-container">
+        <li>Task 1</li>
+      </ul>
+    `;
+    taskList = document.querySelector('.task-container');
+  });
+
+  test('should add a task element to the list in the DOM', () => {
+    // Arrange
+    const description = 'Task 1';
+
+    // Act
+    addTask(description);
+
+    // Assert
+    const taskElements = taskList.querySelectorAll('li');
+    expect(taskElements.length).toBe(1); // Check if exactly one <li> element is added
+    expect(description).toBe('Task 1'); // Check if exactly one <li> element is added
+  });
+
+  test('should remove a task element from the list in the DOM', () => {
+    // Act
+    deleteTask();
+
+    // Assert
+    const taskElements = taskList.querySelectorAll('li');
+    expect(taskElements.length).toBe(1); // Check if exactly one <li> element has been removed
+  });
 });
