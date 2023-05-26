@@ -9,6 +9,7 @@ jest.mock('./tasks', () => ({
 describe('Edit function, status complete and clear all button', () => {
   let taskItem;
   let taskDescription;
+  let taskCheckbox;
 
   beforeEach(() => {
     // Clear mock function calls and reset mock behavior
@@ -19,12 +20,14 @@ describe('Edit function, status complete and clear all button', () => {
     document.body.innerHTML = `
       <ul class="task-container">
         <li class="task-item">
+        <input type="checkbox">
         <p>Task 1</p>
         </li>
       </ul>
     `;
     taskItem = document.querySelector('.task-item');
     taskDescription = taskItem.querySelector('p');
+    taskCheckbox = taskItem.querySelector('input[type="checkbox"]');
   });
 
   test('should save changes and update task list in the DOM', () => {
@@ -40,5 +43,30 @@ describe('Edit function, status complete and clear all button', () => {
     expect(taskDescription.innerText).toBe(updatedDescription);
     expect(renderTasks).toHaveBeenCalledTimes(1);
     expect(saveTasks).toHaveBeenCalledTimes(1);
+  });
+
+  test('should mark task as completed when checkbox is checked', () => {
+    // Act
+    taskCheckbox.checked = true;
+    taskCheckbox.dispatchEvent(new Event('change'));
+
+    // Assert
+    expect(taskItem.classList.contains('task-completed')).toBe(true);
+    expect(saveTasks).toHaveBeenCalledTimes(1);
+    expect(renderTasks).toHaveBeenCalledTimes(1);
+  });
+
+  test('should mark task as not completed when checkbox is unchecked', () => {
+    // Arrange
+    taskItem.classList.add('task-completed');
+
+    // Act
+    taskCheckbox.checked = false;
+    taskCheckbox.dispatchEvent(new Event('change'));
+
+    // Assert
+    expect(taskItem.classList.contains('task-completed')).toBe(false);
+    expect(saveTasks).toHaveBeenCalledTimes(1);
+    expect(renderTasks).toHaveBeenCalledTimes(1);
   });
 });
