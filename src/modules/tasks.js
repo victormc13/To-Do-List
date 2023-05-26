@@ -171,4 +171,3 @@ export const clearCompletedTasks = () => {
   saveTasks();
   renderTasks();
 };
-

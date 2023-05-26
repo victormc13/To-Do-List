@@ -1,4 +1,4 @@
-import { taskDescription } from "./tasks";
+import { taskDescription } from './tasks';
 
 export const enableTaskDescriptionEditing = () => {
   taskDescription.contentEditable = true;
