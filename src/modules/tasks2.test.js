@@ -19,7 +19,7 @@ describe('Edit function, status complete and clear all button', () => {
     // Create a mock task list in the DOM
     document.body.innerHTML = `
       <ul class="task-container">
-        <li class="task-item">
+        <li class="task-item task-completed">
         <input type="checkbox">
         <p>Task 1</p>
         </li>
@@ -49,6 +49,8 @@ describe('Edit function, status complete and clear all button', () => {
     // Act
     taskCheckbox.checked = true;
     taskCheckbox.dispatchEvent(new Event('change'));
+    saveTasks();
+    renderTasks();
 
     // Assert
     expect(taskItem.classList.contains('task-completed')).toBe(true);
@@ -58,11 +60,13 @@ describe('Edit function, status complete and clear all button', () => {
 
   test('should mark task as not completed when checkbox is unchecked', () => {
     // Arrange
-    taskItem.classList.add('task-completed');
+    taskItem.classList.remove('task-completed');
 
     // Act
     taskCheckbox.checked = false;
     taskCheckbox.dispatchEvent(new Event('change'));
+    saveTasks();
+    renderTasks();
 
     // Assert
     expect(taskItem.classList.contains('task-completed')).toBe(false);
