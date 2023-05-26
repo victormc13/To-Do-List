@@ -73,4 +73,23 @@ describe('Edit function, status complete and clear all button', () => {
     expect(saveTasks).toHaveBeenCalledTimes(1);
     expect(renderTasks).toHaveBeenCalledTimes(1);
   });
+
+  test('should remove completed tasks from the task list', () => {
+    // Arrange
+    const tasks = [
+      { id: 1, description: 'Task 1', completed: true },
+      { id: 2, description: 'Task 2', completed: false },
+      { id: 3, description: 'Task 3', completed: true },
+    ];
+    const expectedTasksAfterClear = [
+      { id: 2, description: 'Task 2', completed: false },
+    ];
+
+    // Act
+    renderTasks();
+
+    // Assert
+    expect(saveTasks).toHaveBeenCalledTimes(1);
+    expect(saveTasks).toHaveBeenCalledWith(expectedTasksAfterClear);
+  });
 });
